@@ -4,7 +4,6 @@ import DataList from "./Source";
 
 export default function SourcesList() {
 
-
   const handleDelete = (id)=>{
     const newdatalist = datalist.filter(data => data.id !== id);
     setDataList(newdatalist);

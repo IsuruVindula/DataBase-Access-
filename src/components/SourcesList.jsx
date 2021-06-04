@@ -28,6 +28,6 @@ export default function SourcesList() {
     },[]);
 
   return (
-      <DataList datalist={datalist} handleDelete={handleDelete} handleEdit={handleEdit} />
+      datalist && <DataList datalist={datalist} handleDelete={handleDelete} handleEdit={handleEdit} />
       );
     }
