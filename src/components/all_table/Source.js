@@ -1,9 +1,10 @@
-import { Container, Label,Table, Row, Button } from "reactstrap";
+import { Container, Label} from "reactstrap";
 import { Link } from "react-router-dom";
+import Tabledetails from './Tabledetails';
 
 const DataList = ({datalist, handleDelete, handleEdit}) => {
 
-  console.log(datalist[1])
+  console.log(datalist)
   let numarray = Object.keys(datalist);
   console.log(numarray)
   let keyarray = numarray.map(i => {return(Object.keys(datalist[i]))})
@@ -19,12 +20,12 @@ const DataList = ({datalist, handleDelete, handleEdit}) => {
       <div>
         <ul>
           {
-            keyarray.map((item,i) => {return (<li key={i}>{item}</li>)})
+            keyarray.map((item,i) => {return (<li key={i}><Link to={`/tabledetails/${item}`}>{item}</Link></li>)})
           }
         </ul>
       </div>
-
-      </Container>
+      </Container>,
+      <Tabledetails tabledetails={datalist}/>
     )
 }
 

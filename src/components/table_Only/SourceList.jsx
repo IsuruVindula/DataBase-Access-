@@ -17,13 +17,15 @@ export default function SourcesList() {
   const [datalist, setDataList] = useState([]);
 
   useEffect(() => {
-    console.log("hook runs")
-      fetch('http://localhost:8000/table_name')
-      .then(res =>
-           res.json()
-        ).then((rawdata)=>{
-          setDataList(rawdata)
-        })
+    setTimeout(() => {
+      console.log("hook runs")
+        fetch('http://localhost:8000/table_name')
+        .then(res =>
+             res.json()
+          ).then((rawdata)=>{
+            setDataList(rawdata)
+          })
+      }, 1000);
     },[]);
 
     return (

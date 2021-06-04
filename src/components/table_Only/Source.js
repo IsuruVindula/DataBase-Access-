@@ -7,7 +7,6 @@ const DataList = ({datalist, handleDelete, handleEdit}) => {
 
     if(datalist[0] !== undefined && datalist[0].detail !== undefined){
       attarray = Object.keys(datalist[0].detail)
-      console.log(attarray)
     }
 
     return(
@@ -29,7 +28,6 @@ const DataList = ({datalist, handleDelete, handleEdit}) => {
               )
             })
            }
-
           <Row>
            <Table striped>
              <thead>
@@ -46,9 +44,7 @@ const DataList = ({datalist, handleDelete, handleEdit}) => {
             {
                attarray.map((key,i) => {
                 return (
-                  <tr>
-                    <th scope="row" key={i}>{i}</th>
-                    <td>{key}</td>
+                  <tr key={i}>
                     <td>{datalist[0].detail[key].fileSize}</td>
                     <td>{datalist[0].detail[key].lastAccessTime}</td>
                     <td>{datalist[0].detail[key].lastModifiedTime}</td>
@@ -60,11 +56,10 @@ const DataList = ({datalist, handleDelete, handleEdit}) => {
                  )
               })
              }
-
               </tbody>
             </Table>
           </Row>
-          </Container>
+        </Container>
     )
 }
 
