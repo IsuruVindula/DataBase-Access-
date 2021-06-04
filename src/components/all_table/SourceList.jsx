@@ -19,7 +19,7 @@ export default function SourcesList() {
 
   useEffect(() => {
 
-      fetch('http://localhost:8000/table_name')
+      fetch('http://localhost:8000/db_name')
       .then(res =>
            res.json()
         ).then((rawdata)=>{

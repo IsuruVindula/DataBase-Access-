@@ -11,6 +11,7 @@ import SourceList from './components/table_Only/SourceList';
 // import SourcesList from './components/SourceList';
 import SideBar from './components/SideBar';
 import tableonlysourcelist from './components/table_Only/SourceList';
+import alltablesourcelist from './components/all_table/SourceList';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route exact path="/sourcelist" component={SourceList} />
             <Route exact path="/tableonlysourcelist" component={tableonlysourcelist} />
+            <Route exact path="/alltablesourcelist" component={alltablesourcelist} />
           </Switch>
         </Router>
       </div>
