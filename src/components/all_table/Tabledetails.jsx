@@ -5,8 +5,10 @@ import { Container, Label,Table, Row } from "reactstrap";
 function Tabledetails(){
 
     const {id} = useParams();
-    const [data, setdata] = useState([]);
+    const [data, setdata] = useState({});
+    let p = [];
     let selectData = {};
+    let showmetadata = '';
 
 
     useEffect(() => {
@@ -16,38 +18,39 @@ function Tabledetails(){
                 res.json()
                 ).then((rawdata)=>{
                     setdata(rawdata)
-                    console.log(data)
                 })
-            },1000)
+            },2000)
         }, [id]);
 
-        console.log(data)
+        p = Object.keys(data).map(i => data[i][id])
+        console.log(p);
 
-        if(data !== undefined){
-            console.log("if condition enterd");
-            // convert to array
-            let t = JSON.stringify(data)
-            let p = JSON.parse(t).map(d => d)
+        // if(p !== undefined){
+        //     console.log("if condition enterd");
+        //     // convert to array
+        //     let t = JSON.stringify(data)
+        //     let p = JSON.parse(t).map(d => d)
 
-            p.map(item => {
-                if(item[id] !== undefined){
-                    return (selectData = item[id])
-                }
-            })
-        }
+        //     p.map(item => {
+        //         if(item[id] !== undefined){
+        //             return (selectData = item[id])
+        //         }
+        //     })
+        // }
 
-        // console.log(selectData.detail);
-        // (selectData.detail).map(key => console.log(key))
+        showmetadata = p.filter(i => {return i !== undefined})
+        console.log(showmetadata)
+
 
     return (
         <Container>
-        {/* <div>
-            <p>
-                <span> Filesize: {selectData.total.fileSize} || </span>}
-                <span> Last Access Time: {selectData.total.lastAccessTime} ||</span>
-                <span> Last Modified Time: {selectData.total.lastModifiedTime} </span>
-            </p>
-        </div> */}
+            {/* <div>
+                <p>
+                    <span> Filesize: {showmetadata[0].total.fileSize} || </span>
+                    <span> Last Access Time: {showmetadata[0].total.lastAccessTime} ||</span>
+                    <span> Last Modified Time: {showmetadata[0].total.lastModifiedTime} </span>
+                </p>
+            </div> */}
 
         {/* <Row>
            <Table striped>
