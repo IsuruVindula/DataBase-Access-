@@ -1,21 +1,23 @@
 import { Container, Label,Table, Row } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const DataList = ({datalist}) => {
 
   console.log(datalist[0]);
 
     let attarray = [];
+    const history = useHistory();
 
     if(datalist[0] !== undefined && datalist[0].detail !== undefined){
       attarray = Object.keys(datalist[0].detail)
     }
 
+
     const handleDelete = (id) => {
-      console.log(id);
-      // fetch('http://localhost:8000/table_name/detail/' + id,{method: 'GET'})
-      // .then(res => console.log("Status:",res.status, "; Body:",res)
-      // )
+      console.log("run handleDelete");
+      fetch('http://localhost:8000/table_name/detail/' + id,{method: 'DELETE'})
+      .then(res => console.log("Status:",res.status, "; Body:",res))
+      .then(history.push('/tableonlysourcelist'))
     }
 
     return(
