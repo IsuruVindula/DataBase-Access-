@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const DataList = ({datalist}) => {
 
-  console.log(datalist);
+  console.log(datalist[0]);
 
     let attarray = [];
 
@@ -11,14 +11,11 @@ const DataList = ({datalist}) => {
       attarray = Object.keys(datalist[0].detail)
     }
 
-
-
     const handleDelete = (id) => {
       console.log(id);
-      fetch('http://localhost:8000/table_name/detail/' + id,{method: 'DELETE'})
-      .then(
-       console.log("Detail Deleted")
-      )
+      // fetch('http://localhost:8000/table_name/detail/' + id,{method: 'GET'})
+      // .then(res => console.log("Status:",res.status, "; Body:",res)
+      // )
     }
 
     return(

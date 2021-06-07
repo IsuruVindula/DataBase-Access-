@@ -31,6 +31,5 @@ export default function SourcesList() {
 
   return (
       (datalist && <DataList datalist={datalist} handleDelete={handleDelete} handleEdit={handleEdit}/>)
-      // <Tabledetails tabledetails={datalist}/>
       );
     }
