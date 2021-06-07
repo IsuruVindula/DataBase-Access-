@@ -1,7 +1,9 @@
 import { Container, Label,Table, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 
-const DataList = ({datalist, handleDelete, handleEdit}) => {
+const DataList = ({datalist}) => {
+
+  console.log(datalist);
 
     let attarray = [];
 
@@ -9,11 +11,21 @@ const DataList = ({datalist, handleDelete, handleEdit}) => {
       attarray = Object.keys(datalist[0].detail)
     }
 
+
+
+    const handleDelete = (id) => {
+      console.log(id);
+      fetch('http://localhost:8000/table_name/detail/' + id,{method: 'DELETE'})
+      .then(
+       console.log("Detail Deleted")
+      )
+    }
+
     return(
         <Container>
        <div className="mt-3">
          <Label style={{ marginRight: "10px" }}>Data Source List</Label>
-         <Link className="btn btn-secondary" to="/datasources/addsource">
+         <Link className="btn btn-secondary" to="/adddata">
            Add Source
          </Link>
        </div>
@@ -45,12 +57,14 @@ const DataList = ({datalist, handleDelete, handleEdit}) => {
                attarray.map((key,i) => {
                 return (
                   <tr key={i}>
+                    <td>{i}</td>
+                    <td>{key}</td>
                     <td>{datalist[0].detail[key].fileSize}</td>
                     <td>{datalist[0].detail[key].lastAccessTime}</td>
                     <td>{datalist[0].detail[key].lastModifiedTime}</td>
                     <td>
-                      <button className="btn btn-secondary pr-2" onClick={()=>handleEdit()}>Edit</button>
-                      <button className="btn btn-danger" onClick={() => handleDelete()}>Delete</button>
+                      <button className="btn btn-secondary pr-2">Edit</button>
+                      <button className="btn btn-danger" onClick={() => handleDelete(key)}>Delete</button>
                     </td>
                   </tr>
                  )

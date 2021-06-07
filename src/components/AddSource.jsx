@@ -11,7 +11,6 @@ import {
   Label,
   Row,
 } from "reactstrap";
-import { toast } from "react-toastify";
 
 import { getDatabaseTypes } from "../services/sourceService";
 
@@ -32,15 +31,16 @@ export default function AddSource() {
     setCounter((prevCounter) => prevCounter - 1);
   };
 
-  // useEffect(async () => {
-  //   try {
-  //     const response = await getDatabaseTypes();
-  //     updateDatabaseTypes(response);
-  //     console.log(response);
-  //   } catch (e) {
-  //     toast.error("Network Error");
-  //   }
-  // });
+
+  useEffect(() => {
+    try {
+      const response =  getDatabaseTypes();
+      updateDatabaseTypes(response);
+      console.log(response);
+    } catch (e) {
+      // toast.error("Network Error");
+    }
+  },[]);
 
   const onSubmit = (data) => {
     // try{
@@ -62,7 +62,7 @@ export default function AddSource() {
           <Controller
             name="iceCreamType"
             as={Select}
-            options={databaseTypes}
+            options={getDatabaseTypes}
             control={control}
             defaultValue=""
           />

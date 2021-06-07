@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import DataList from "./Source";
+import Tabledetails from './Tabledetails';
+
 
 
 export default function SourcesList() {
@@ -28,6 +30,7 @@ export default function SourcesList() {
     },[]);
 
   return (
-      <DataList datalist={datalist} handleDelete={handleDelete} handleEdit={handleEdit} />
+      (datalist && <DataList datalist={datalist} handleDelete={handleDelete} handleEdit={handleEdit}/>)
+      // <Tabledetails tabledetails={datalist}/>
       );
     }

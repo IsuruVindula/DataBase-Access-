@@ -5,9 +5,10 @@ import DataList from "./Source";
 export default function SourcesList() {
 
   const handleDelete = (id)=>{
-    const newdatalist = datalist.filter(data => data.id !== id);
+    // const newdatalist = datalist.filter((data) => (Object.keys(datalist[0].detail).map(key => key !== id))); //(data.id !== id)
+    const newdatalist = (datalist[0].detail).filter((data) => console.log(data)); //(data.id !== id)
     setDataList(newdatalist);
-    console.log("Deleted");
+    console.log("Deleted", id);
   }
 
   const handleEdit = (id)=>{
@@ -15,6 +16,7 @@ export default function SourcesList() {
   }
 
   const [datalist, setDataList] = useState([]);
+  const [isPending, setisPending] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -23,12 +25,16 @@ export default function SourcesList() {
         .then(res =>
              res.json()
           ).then((rawdata)=>{
-            setDataList(rawdata)
+            setDataList(rawdata);
+            setisPending(false);
           })
       }, 1000);
     },[]);
 
     return (
-    datalist && <DataList datalist={datalist} handleDelete={handleDelete} handleEdit={handleEdit} />
+      <div>
+        {isPending && <div>Loding........</div>}
+        {datalist && <DataList datalist={datalist} handleDelete={handleDelete} handleEdit={handleEdit} />}
+      </div>
       );
     }

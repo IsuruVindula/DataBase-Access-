@@ -1,13 +1,12 @@
 import React from 'react'
-import { useParams } from 'react-router';
 
-const Tabledetails = ({tabledetails}) => {
+function Tabledetails(){
 
-    const {tablename} = useParams();
+    // const {tablename} = useParams();
 
     return (
         <div>
-            <h2>HElloooooooo {tablename}</h2>
+            <h2>Helloooooooooooooooooooooooooo</h2>
         </div>
     )
 }

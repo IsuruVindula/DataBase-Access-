@@ -13,6 +13,7 @@ import SideBar from './components/SideBar';
 import tableonlysourcelist from './components/table_Only/SourceList';
 import alltablesourcelist from './components/all_table/SourceList';
 import tabledetails from './components/all_table/Tabledetails';
+import adddata from './components/AddData';
 
 
 function App() {
@@ -33,7 +34,8 @@ function App() {
             <Route exact path="/sourcelist" component={SourceList} />
             <Route exact path="/tableonlysourcelist" component={tableonlysourcelist} />
             <Route exact path="/alltablesourcelist" component={alltablesourcelist} />
-            <Route exact path="/tabledetails/:tablename" component={tabledetails} />
+            <Route exact path="/tabledetails" component={tabledetails} />
+            <Route exact path="/adddata" component={adddata} />
           </Switch>
         </Router>
       </div>
