@@ -13,7 +13,7 @@ function Tabledetails(){
 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:8000/db_name', {method: 'GET'})
+            fetch('http://localhost:8000/db_name' + , {method: 'GET'})
             .then(res =>
                 res.json()
                 ).then((rawdata)=>{
