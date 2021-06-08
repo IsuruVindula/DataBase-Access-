@@ -1,37 +1,38 @@
 import { Container, Label,Table, Row } from "reactstrap";
 import { Link, useHistory } from "react-router-dom";
 
-const DataList = ({datalist}) => {
+const ShowTable = ({showdata}) => {
 
-  console.log(datalist[0]);
+  console.log("showdata",showdata);
 
     let attarray = [];
     const history = useHistory();
 
-    console.log("before id",datalist[0]);
+    // console.log("before id",showdata[0]);
 
-    if(datalist[0] !== undefined && datalist[0].detail !== undefined){
-      attarray = Object.keys(datalist[0].detail)
-    }
+    // if(datalist[0] !== undefined && datalist[0].detail !== undefined){
+    //   attarray = Object.keys(datalist[0].detail)
+    // }
 
 
-    const handleDelete = (id) => {
-      console.log("run handleDelete");
-      fetch('http://localhost:8000/table_name/detail/' + id,{method: 'DELETE'})
-      .then(res => console.log("Status:",res.status, "; Body:",res))
-      .then(history.push('/tableonlysourcelist'))
-    }
+    // const handleDelete = (id) => {
+    //   console.log("run handleDelete");
+    //   fetch('http://localhost:8000/table_name/detail/' + id,{method: 'DELETE'})
+    //   .then(res => console.log("Status:",res.status, "; Body:",res))
+    //   .then(history.push('/tableonlysourcelist'))
+    // }
 
     return(
         <Container>
-       <div className="mt-3">
+       {/* <div className="mt-3">
          <Label style={{ marginRight: "10px" }}>Data Source List</Label>
          <Link className="btn btn-secondary" to="/adddata">
            Add Source
          </Link>
-       </div>
+       </div> */}
+       <p>hiiiiiiii</p>
            {
-            datalist.map((singledata,i) => {
+            {/* datalist.map((singledata,i) => {
             return(
                 <p key={i}>
                     <span> Filesize: {singledata.total.fileSize} || </span>
@@ -39,9 +40,9 @@ const DataList = ({datalist}) => {
                     <span> Last Modified Time: {singledata.total.lastModifiedTime} </span>
                 </p>
               )
-            })
+            }) */}
            }
-          <Row>
+          {/* <Row>
            <Table striped>
              <thead>
                <tr>
@@ -73,11 +74,11 @@ const DataList = ({datalist}) => {
              }
               </tbody>
             </Table>
-          </Row>
+          </Row> */}
         </Container>
     )
 }
 
-export default DataList;
+export default ShowTable;
 
 
