@@ -28,7 +28,7 @@ const databaseSelect = (databasename) => {
       <div>
         <ul>
           {
-            keyarray.map((item,i) => {return (<li key={i}><Link onClick={()=>{databaseSelect(item)}} to={`/tabledetails/${item}`}>{item}</Link></li>)})
+            keyarray.map((item,i) => {return (<li key={i}><Link onClick={()=>{databaseSelect(item)}} to={`/tabledetails/${i}`}>{item}</Link></li>)})
           }
         </ul>
       </div>

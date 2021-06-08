@@ -10,6 +10,7 @@ function Tabledetails(){
           lastModifiedTime: ''
         }};
   const {id} = useParams();
+  console.log("id",id);
   const [data, setdata] = useState(showdata);
   let keyarray = [];
 
@@ -20,8 +21,8 @@ function Tabledetails(){
             .then(res =>
                 res.json()
                 ).then((rawdata)=>{
-                  console.log("rawdata",rawdata[0]);
-                  setdata(rawdata[0]);
+                  console.log("rawdata",rawdata[id]);
+                  setdata(rawdata[id]);
                 })
           },500)
     }, []);
