@@ -1,16 +1,17 @@
-import ColumnGroup from 'antd/lib/table/ColumnGroup';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import { Container, Label,Table, Row } from "reactstrap";
-import ShowTable from './ShowTable';
 
 function Tabledetails(){
 
-    const {id} = useParams();
-    const [data, setdata] = useState({});
-    let p = [];
-    let keyarray = {};
-    let showdata = {};
+  let showdata = {total: {
+          fileSize: '',
+          lastAccessTime: '',
+          lastModifiedTime: ''
+        }};
+  const {id} = useParams();
+  const [data, setdata] = useState(showdata);
+  let keyarray = [];
 
 
     useEffect(() => {
@@ -19,46 +20,46 @@ function Tabledetails(){
             .then(res =>
                 res.json()
                 ).then((rawdata)=>{
-                  setdata(rawdata)
+                  // console.log("rawdata",rawdata);
+                  setdata(rawdata[0]);
                 })
-              },1000)
-            }, []);
+          },500)
+    }, []);
 
-            console.log("data",data);
-            if(data.length){
-              console.log("if condition enterd");
-              p = Object.keys(data).map(i => data[i][id])
-              console.log("pdata",p);
-              showdata = p.filter(i => {return i !== undefined})
-              console.log("showdata", showdata[0].detail);
 
-              //get the keys into an array
-              keyarray = Object.keys(showdata[0].detail)
-              console.log("Keyarray",keyarray)
+    const newfuct = () => {
+      const  objectkey = Object.keys(data);
 
-              // convert to array
-              // let t = JSON.stringify(showdata[0].detail);
-              // let b = JSON.parse(t).map(d => d)
+      if(objectkey[0] !== 'total'){
 
-              // p.map(item => {
-              //       if(item[id] !== undefined){
-              //             return (selectData = item[id])
-              //         }
-              //     })
-          }
+        console.log("if condition enterd");
 
+        console.log(objectkey);
+
+        showdata = data[objectkey[0]]
+        console.log("showdata",showdata);
+
+      // console.log("showdata", showdata);
+
+      //get the keys into an array
+      keyarray = Object.keys(showdata.detail)
+      console.log("Keyarray",keyarray);
+      }
+    }
+
+    newfuct();
 
 
     return (
         <Container>
-            {/* <div>
+            <div>
                 <p>
-                    <span> Filesize: {showdata[0].total.fileSize} || </span>
-                    <span> Last Access Time: {showdata[0].total.lastAccessTime} ||</span>
-                    <span> Last Modified Time: {showdata[0].total.lastModifiedTime} </span>
+                    <span> Filesize: {showdata.total.fileSize} || </span>
+                    <span> Last Access Time: {showdata.total.lastAccessTime} ||</span>
+                    <span> Last Modified Time: {showdata.total.lastModifiedTime} </span>
                 </p>
-            </div> */}
-        {/* <Row>
+            </div>
+        <Row>
            <Table striped>
              <thead>
                <tr>
@@ -77,9 +78,9 @@ function Tabledetails(){
                   <tr key={i}>
                     <td>{i}</td>
                     <td>{key}</td>
-                    <td>{showdata[0].detail[key].fileSize}</td>
-                    <td>{showdata[0].detail[key].lastAccessTime}</td>
-                    <td>{showdata[0].detail[key].lastModifiedTime}</td>
+                    <td>{showdata.detail[key].fileSize}</td>
+                    <td>{showdata.detail[key].lastAccessTime}</td>
+                    <td>{showdata.detail[key].lastModifiedTime}</td>
                     <td>
                       <button className="btn btn-secondary pr-2">Edit</button>
                     </td>
@@ -89,7 +90,7 @@ function Tabledetails(){
              }
               </tbody>
             </Table>
-          </Row> */}
+          </Row>
         </Container>
         // <ShowTable showdata={showdata[0]}/>
     )
