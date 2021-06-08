@@ -16,11 +16,11 @@ function Tabledetails(){
 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:8000/db_name', {method: 'GET'})
+            fetch('http://localhost:8000/db_name', {method: 'GET'}) //should add the table name and get data
             .then(res =>
                 res.json()
                 ).then((rawdata)=>{
-                  // console.log("rawdata",rawdata);
+                  console.log("rawdata",rawdata[0]);
                   setdata(rawdata[0]);
                 })
           },500)
@@ -43,7 +43,7 @@ function Tabledetails(){
 
       //get the keys into an array
       keyarray = Object.keys(showdata.detail)
-      console.log("Keyarray",keyarray);
+      // console.log("Keyarray",keyarray);
       }
     }
 
