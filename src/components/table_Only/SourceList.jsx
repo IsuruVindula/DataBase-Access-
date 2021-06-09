@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { Spinner } from "reactstrap";
 import DataList from "./Source";
 
 
@@ -33,7 +34,7 @@ export default function SourcesList() {
 
     return (
       <div>
-        {isPending && <div>Loding........</div>}
+        {isPending && <div style={{alignContent:'center'}}><Spinner color="danger"/></div>}
         {datalist && <DataList datalist={datalist} handleDelete={handleDelete} handleEdit={handleEdit} />}
       </div>
       );

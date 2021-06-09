@@ -25,7 +25,7 @@ function Tabledetails(){
                   setdata(rawdata[id]);
                 })
           },500)
-    }, []);
+    }, [id]);
 
 
     const newfuct = () => {
@@ -55,9 +55,9 @@ function Tabledetails(){
     return (
         <Container className="mt-3">
             <p className="ant-divider ant">
-              <span sm> Filesize: {showdata.total.fileSize}</span>
-              <span sm> Last Access Time: {showdata.total.lastAccessTime}</span>
-              <span sm> Last Modified Time: {showdata.total.lastModifiedTime} </span>
+              <span sm> Filesize: {showdata.total.fileSize} || </span>
+              <span sm> Last Access Time: {showdata.total.lastAccessTime} || </span>
+              <span sm> Last Modified Time: {showdata.total.lastModifiedTime} || </span>
             </p>
         <Row>
            <Table className="table table-dark table-striped table-bordered table-hover table-responsive">
@@ -74,12 +74,12 @@ function Tabledetails(){
             {
                keyarray.map((key,i) => {
                 return (
-                  <tr key={i}>
-                    <td className="text-center">{i}</td>
-                    <td className="text-center">{key}</td>
-                    <td className="text-center">{showdata.detail[key].fileSize}</td>
-                    <td className="text-center">{showdata.detail[key].lastAccessTime}</td>
-                    <td className="text-center">{showdata.detail[key].lastModifiedTime}</td>
+                  <tr key={i} className="text-center">
+                    <td>{i}</td>
+                    <td>{key}</td>
+                    <td>{showdata.detail[key].fileSize}</td>
+                    <td>{showdata.detail[key].lastAccessTime}</td>
+                    <td>{showdata.detail[key].lastModifiedTime}</td>
                   </tr>
                  )
               })

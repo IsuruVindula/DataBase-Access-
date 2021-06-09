@@ -1,4 +1,4 @@
-import { Container, Label,Table, Row } from "reactstrap";
+import { Container, Label,Table, Row, Card, Col, CardTitle, CardText, Spinner } from "reactstrap";
 import { Link, useHistory } from "react-router-dom";
 
 const DataList = ({datalist}) => {
@@ -22,6 +22,12 @@ const DataList = ({datalist}) => {
       .then(history.push('/tableonlysourcelist'))
     }
 
+     const spin = ()=> {if(datalist == null){
+      return(
+        <Spinner color="primary" />
+      )
+    }}
+
     return(
         <Container>
        <div className="mt-3">
@@ -33,40 +39,49 @@ const DataList = ({datalist}) => {
            {
             datalist.map((singledata,i) => {
             return(
-                <p key={i}>
-                    <span> Filesize: {singledata.total.fileSize} || </span>
-                    <span> Last Access Time: {singledata.total.lastAccessTime} ||</span>
-                    <span> Last Modified Time: {singledata.total.lastModifiedTime} </span>
-                </p>
+                <Row>
+                  <Col>
+                    <Card body style={{backgroundColor: '#808000', fontSize:'20px', borderColor:'black' ,margin:'2% 0 5% 0'}}>
+                      <CardTitle>Filesize:</CardTitle>  {singledata.total.fileSize}</Card>
+                  </Col>
+                  <Col>
+                    <Card body style={{backgroundColor: '#808000', fontSize:'20px', margin:'2% 0 5% 0'}}>
+                      <CardTitle>Last Access Time:</CardTitle><CardText>{singledata.total.lastAccessTime}</CardText></Card>
+                  </Col>
+                  <Col>
+                    <Card body style={{backgroundColor: '#808000', fontSize:'20px', margin:'2% 0 5% 0'}}><CardTitle>Last Modified Time:</CardTitle>
+                      <CardText>{singledata.total.lastModifiedTime}</CardText>
+                    </Card>
+                  </Col>
+                </Row>
               )
             })
            }
           <Row>
-           <Table striped>
-             <thead>
+           <Table className="table table-dark table-striped table-bordered table-hover table-responsive" style={{margin:'0px 5px 0 10px'}}>
+             <thead className="text-center">
                <tr>
                  <th>No</th>
                  <th>Date</th>
                  <th>fileSize</th>
                  <th>lastAccessTime</th>
                  <th>lastModifiedTime</th>
-                 <th></th>
                </tr>
               </thead>
               <tbody>
             {
                attarray.map((key,i) => {
                 return (
-                  <tr key={i}>
+                  <tr key={i} className="text-center">
                     <td>{i}</td>
                     <td>{key}</td>
                     <td>{datalist[0].detail[key].fileSize}</td>
                     <td>{datalist[0].detail[key].lastAccessTime}</td>
                     <td>{datalist[0].detail[key].lastModifiedTime}</td>
-                    <td>
-                      <button className="btn btn-secondary pr-2">Edit</button>
-                      <button className="btn btn-danger" onClick={() => handleDelete(key)}>Delete</button>
-                    </td>
+                    {/* <td>
+                      <Button size="sm">Edit</Button>{' '}
+                      <Button color="primary" size="sm" onClick={() => handleDelete(key)}>Delete</Button>
+                    </td> */}
                   </tr>
                  )
               })
