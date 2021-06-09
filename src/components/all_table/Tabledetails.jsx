@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
-import { Container, Label,Table, Row } from "reactstrap";
+import { Container, Label,Table, Row, Col } from "reactstrap";
 
 function Tabledetails(){
 
@@ -48,28 +48,26 @@ function Tabledetails(){
       }
     }
 
+    // have to do some optimizations
     newfuct();
 
 
     return (
-        <Container>
-            <div>
-                <p>
-                    <span> Filesize: {showdata.total.fileSize} || </span>
-                    <span> Last Access Time: {showdata.total.lastAccessTime} ||</span>
-                    <span> Last Modified Time: {showdata.total.lastModifiedTime} </span>
-                </p>
-            </div>
+        <Container className="mt-3">
+            <p className="ant-divider ant">
+              <span sm> Filesize: {showdata.total.fileSize}</span>
+              <span sm> Last Access Time: {showdata.total.lastAccessTime}</span>
+              <span sm> Last Modified Time: {showdata.total.lastModifiedTime} </span>
+            </p>
         <Row>
-           <Table striped>
-             <thead>
+           <Table className="table table-dark table-striped table-bordered table-hover table-responsive">
+             <thead className="text-center">
                <tr>
                  <th>No</th>
                  <th>Date</th>
                  <th>fileSize</th>
                  <th>lastAccessTime</th>
                  <th>lastModifiedTime</th>
-                 <th></th>
                </tr>
               </thead>
               <tbody>
@@ -77,14 +75,11 @@ function Tabledetails(){
                keyarray.map((key,i) => {
                 return (
                   <tr key={i}>
-                    <td>{i}</td>
-                    <td>{key}</td>
-                    <td>{showdata.detail[key].fileSize}</td>
-                    <td>{showdata.detail[key].lastAccessTime}</td>
-                    <td>{showdata.detail[key].lastModifiedTime}</td>
-                    <td>
-                      <button className="btn btn-secondary pr-2">Edit</button>
-                    </td>
+                    <td className="text-center">{i}</td>
+                    <td className="text-center">{key}</td>
+                    <td className="text-center">{showdata.detail[key].fileSize}</td>
+                    <td className="text-center">{showdata.detail[key].lastAccessTime}</td>
+                    <td className="text-center">{showdata.detail[key].lastModifiedTime}</td>
                   </tr>
                  )
               })
