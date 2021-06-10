@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
-import { Container, Label,Table, Row, Col, CardTitle, Card, CardText } from "reactstrap";
+import { Container, Table, Row, Col, CardTitle, Card, CardText } from "reactstrap";
 
 function Tabledetails(){
 
@@ -23,6 +23,7 @@ function Tabledetails(){
                 ).then((rawdata)=>{
                   console.log("rawdata",rawdata[id]);
                   setdata(rawdata[id]);
+                  console.log(rawdata);
                 })
           },500)
     }, [id]);
