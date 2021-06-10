@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
-import { Container, Label,Table, Row, Col } from "reactstrap";
+import { Container, Label,Table, Row, Col, CardTitle, Card, CardText } from "reactstrap";
 
 function Tabledetails(){
 
@@ -54,13 +54,23 @@ function Tabledetails(){
 
     return (
         <Container className="mt-3">
-            <p className="ant-divider ant">
-              <span sm> Filesize: {showdata.total.fileSize} || </span>
-              <span sm> Last Access Time: {showdata.total.lastAccessTime} || </span>
-              <span sm> Last Modified Time: {showdata.total.lastModifiedTime} || </span>
-            </p>
+              <Row style={{borderColor:'black', margin:'2% 0% 0% 5%', fontSize:'20px'}}>
+              <Col>
+                <Card body style={{backgroundColor: '#808000'}}>
+                  <CardTitle>Filesize:</CardTitle>  {showdata.total.fileSize}</Card>
+              </Col>
+              <Col>
+                <Card body style={{backgroundColor: '#808000'}}>
+                  <CardTitle>Last Access Time:</CardTitle><CardText>{showdata.total.lastAccessTime}</CardText></Card>
+              </Col>
+              <Col>
+                <Card body style={{backgroundColor: '#808000'}}><CardTitle>Last Modified Time:</CardTitle>
+                  <CardText>{showdata.total.lastModifiedTime}</CardText>
+                </Card>
+              </Col>
+            </Row>
         <Row>
-           <Table className="table table-dark table-striped table-bordered table-hover table-responsive">
+           <Table className="table table-dark table-striped table-bordered table-hover table-responsive" style={{margin:'2% 3%'}}>
              <thead className="text-center">
                <tr>
                  <th>No</th>
