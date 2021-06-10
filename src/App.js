@@ -7,12 +7,11 @@ import 'react-toastify/dist/ReactToastify.css';
 // import HeadingComponent from './components/Heading'`
 import Login from './components/Login';
 import SourceList from './components/table_Only/SourceList';
-// import SourcesList from './components/SourceList';
 import SideBar from './components/SideBar';
 import tableonlysourcelist from './components/table_Only/SourceList';
 import alltablesourcelist from './components/all_table/SourceList';
 import tabledetails from './components/all_table/Tabledetails';
-import adddata from './components/AddData';
+import AddData from './components/AddData';
 
 
 function App() {
@@ -34,7 +33,7 @@ function App() {
             <Route exact path="/v1/test/db/<db name>/table/tableonlysourcelist" component={tableonlysourcelist} />
             <Route exact path="/v1/test/db/alltablesourcelist" component={alltablesourcelist} />
             <Route exact path="/tabledetails/:id" component={tabledetails} />
-            <Route exact path="/adddata" component={adddata} />
+            <Route exact path="/adddata" component={AddData} />
           </Switch>
         </Router>
       </div>

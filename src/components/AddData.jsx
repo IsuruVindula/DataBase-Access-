@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Controller, useForm } from "react-hook-form";
-// import Select from "react-select";
-import {Button,Col,Container,Form,FormGroup,Input,Label} from "reactstrap";
+import { useForm } from "react-hook-form";
+import Select from "react-select";
+import {Container,Form} from "reactstrap";
 
 import {getDatabaseTypes} from '../services/sourceService';
 

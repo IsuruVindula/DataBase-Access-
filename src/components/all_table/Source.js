@@ -11,24 +11,24 @@ const DataList = ({datalist, handleDelete, handleEdit}) => {
   let keyarray = numarray.map(i => {return(Object.keys(datalist[i]))})
   let tables = {};
 
-const databaseSelect = (databasename) => {
-  Object.keys(datalist).forEach((data) => {if (typeof datalist[data][databasename] !== 'undefined'){tables = (datalist[data][databasename])}})
-  // console.log("onclick",databasename, tables);
-}
+// const databaseSelect = (databasename) => {
+//   Object.keys(datalist).forEach((data) => {if (typeof datalist[data][databasename] !== 'undefined'){tables = (datalist[data][databasename])}})
+//   // console.log("onclick",databasename, tables);
+// }
 
 
   return(
-       <Container>
+       <Container style={{margin: '0 7%'}}>
       <div className="mt-3">
         <Label style={{ marginRight: "10px" }}>Data Source List</Label>
-        <Link className="btn btn-secondary" to="/adddata">
+        <Link className="btn btn-secondary" to="/AddData">
           Add Source
         </Link>
       </div>
       <div>
         <ul>
           {
-            keyarray.map((item,i) => {return (<li key={i}><Link onClick={()=>{databaseSelect(item)}} to={`/tabledetails/${i}`}>{item}</Link></li>)})
+            keyarray.map((item,i) => {return (<li key={i}><Link to={`/tabledetails/${i}`}>{item}</Link></li>)})
           }
         </ul>
       </div>
