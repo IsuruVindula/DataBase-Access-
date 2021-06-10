@@ -54,7 +54,7 @@ function Tabledetails(){
 
     return (
         <Container className="mt-3">
-              <Row style={{borderColor:'black', margin:'2% 0% 0% 5%', fontSize:'20px'}}>
+              <Row style={{borderColor:'black', margin:'2% 0% 0% 5%', fontSize:'19px'}}>
               <Col>
                 <Card body style={{backgroundColor: '#808000'}}>
                   <CardTitle>Filesize:</CardTitle>  {showdata.total.fileSize}</Card>
