@@ -24,13 +24,12 @@ export default class NewDataForm extends Component {
         this.setState({formdata:{
             [e.target.id]: e.target.value
         }})
-        console.log([e.target.id], e.target.value)
     }
 
     handleSubmit = (e) =>{
         e.preventDefault();
-        console.log(this.state);
-
+        fetch('http://localhost:8000/env/' + this.state.formdata, {method: 'POST'})
+        .then(console.log("data added"));
     }
 
     componentDidMount(){
@@ -63,11 +62,8 @@ export default class NewDataForm extends Component {
                     <Label sm={2}>Access</Label>
                     <Col sm={10}>
                         <Input type="select" name="access" id="access" onChange={this.handleChange} style={{borderColor: 'yellowgreen'}}>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option>read-only</option>
+                        <option>read-write</option>
                         </Input>
                     </Col>
                     </FormGroup>
@@ -111,7 +107,7 @@ export default class NewDataForm extends Component {
                     </FormGroup>
                     <FormGroup check row style={{margin: '20px'}}>
                     <Col sm={{ size: 10, offset: 2 }}>
-                        <Button>Submit</Button>
+                        <Button size="lg">Submit</Button>
                     </Col>
                     </FormGroup>
                 </Form>
