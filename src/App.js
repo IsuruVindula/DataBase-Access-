@@ -11,7 +11,7 @@ import SideBar from './components/SideBar';
 import tableonlysourcelist from './components/table_Only/SourceList';
 import alltablesourcelist from './components/all_table/SourceList';
 import tabledetails from './components/all_table/Tabledetails';
-import AddData from './components/AddData';
+import AddData from './components/NewDataForm';
 
 
 function App() {
