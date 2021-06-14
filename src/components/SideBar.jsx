@@ -32,7 +32,7 @@ export default function SideBar() {
     >
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
-        <NavItem eventKey="datasources">
+        <NavItem >
           <NavIcon>
             <FaCoins size="1.8rem" />
           </NavIcon>

@@ -1,13 +1,12 @@
 import { Container, Label, ListGroup, ListGroupItem, InputGroupAddon, InputGroupText, Input, InputGroup} from "reactstrap";
 import { Link } from "react-router-dom";
+import './source.css';
 
 
 const DataList = ({datalist, handleDelete, handleEdit, handleSearch}) => {
 
 
-  // console.log(datalist)
   let numarray = Object.keys(datalist);
-  // console.log("numarray",numarray)
   let keyarray = numarray.map(i => {return(Object.keys(datalist[i]))})
 
 // const databaseSelect = (databasename) => {
@@ -29,9 +28,9 @@ const DataList = ({datalist, handleDelete, handleEdit, handleSearch}) => {
         </InputGroup>
       </div>
       <div>
-        <ListGroup>
+        <ListGroup >
             {
-              keyarray.map((item,i) => {return (<ListGroupItem style={{borderColor: 'Green', padding: '15px'}} key={i}><Link to={`/tabledetails/${i}`}>{item}</Link></ListGroupItem>)})
+              keyarray.map((item,i) => {return (<ListGroupItem key={i}><Link to={`/tabledetails/${i}`}>{item}</Link></ListGroupItem>)})
             }
         </ListGroup>
       </div>

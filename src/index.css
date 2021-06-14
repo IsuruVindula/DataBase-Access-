@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.group {
+  width: 100px;
+  height: 100px;
+  transition: width 1s, height 1s;
+  border-color: 'Green';
+  padding: '15px';
+}
+
+.ListGroupItem:hover {
+  width: 150px;
+  height: 150px;
+}
+
+ListGroupItem{
+      transition: width 2s, height 2s;
+}
