@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import DataList from "./Source";
-import Tabledetails from './Tabledetails';
 
 
 
 export default function SourcesList() {
+
+  const [datalist, setDataList] = useState([]);
+  let searchinput = " ";
 
 
   const handleDelete = (id)=>{
@@ -17,7 +19,16 @@ export default function SourcesList() {
     console.log("Edited");
   }
 
-  const [datalist, setDataList] = useState([]);
+  const handleSearch = (e) => {
+    searchinput = e.target.value;
+    if(searchinput){
+      const newdatalist = datalist.filter(data => {return (Object.keys(data)[0].includes(searchinput))});
+      setDataList(newdatalist);
+    }else{
+      setDataList(datalist);
+    }
+  }
+
 
   useEffect(() => {
 
@@ -30,6 +41,6 @@ export default function SourcesList() {
     },[]);
 
   return (
-      (datalist && <DataList datalist={datalist} handleDelete={handleDelete} handleEdit={handleEdit}/>)
+      (datalist && <DataList datalist={datalist} handleDelete={handleDelete} handleEdit={handleEdit} handleSearch={handleSearch} />)
       );
     }

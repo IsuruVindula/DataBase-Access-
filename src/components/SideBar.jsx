@@ -14,8 +14,8 @@ import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import { FaViacoin, FaCoins} from "react-icons/fa";
 
 const sidebar = {
-  marginRight: "15px",
-  color: "warning",
+  marginRight: "14px",
+  color: "primary",
 };
 
 export default function SideBar() {
@@ -23,6 +23,7 @@ export default function SideBar() {
 
   return (
     <SideNav
+      //redirecting
       onSelect={(selected) => {
         const to = "/" + selected;
         history.push(to);
@@ -36,10 +37,10 @@ export default function SideBar() {
             <FaCoins size="1.8rem" />
           </NavIcon>
           <NavText>Data Storage</NavText>
-          <NavItem eventKey="datasources/sourcelist">
+          <NavItem eventKey="v1/test/db/alltablesourcelist">
             <NavText>Source List</NavText>
           </NavItem>
-          <NavItem eventKey="datasources/addsource">
+          <NavItem eventKey="adddata">
             <NavText>Add Source</NavText>
           </NavItem>
           <NavItem eventKey="datasources/sinklist">

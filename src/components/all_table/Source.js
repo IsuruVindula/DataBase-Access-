@@ -1,15 +1,14 @@
-import { Container, Label} from "reactstrap";
+import { Container, Label, ListGroup, ListGroupItem, InputGroupAddon, InputGroupText, Input, InputGroup} from "reactstrap";
 import { Link } from "react-router-dom";
 
 
-const DataList = ({datalist, handleDelete, handleEdit}) => {
+const DataList = ({datalist, handleDelete, handleEdit, handleSearch}) => {
 
 
   // console.log(datalist)
   let numarray = Object.keys(datalist);
   // console.log("numarray",numarray)
   let keyarray = numarray.map(i => {return(Object.keys(datalist[i]))})
-  let tables = {};
 
 // const databaseSelect = (databasename) => {
 //   Object.keys(datalist).forEach((data) => {if (typeof datalist[data][databasename] !== 'undefined'){tables = (datalist[data][databasename])}})
@@ -24,15 +23,18 @@ const DataList = ({datalist, handleDelete, handleEdit}) => {
         <Link className="btn btn-secondary" to="/AddData">
           Add Source
         </Link>
+        <InputGroup style={{margin: "10px 0"}}>
+        <Input className='text-center' placeholder="Search Here" type='searchinput' onChange={handleSearch} />
+          <InputGroupAddon addonType="append"><InputGroupText>Search</InputGroupText></InputGroupAddon>
+        </InputGroup>
       </div>
       <div>
-        <ul>
-          {
-            keyarray.map((item,i) => {return (<li key={i}><Link to={`/tabledetails/${i}`}>{item}</Link></li>)})
-          }
-        </ul>
+        <ListGroup>
+            {
+              keyarray.map((item,i) => {return (<ListGroupItem style={{borderColor: 'Green', padding: '15px'}} key={i}><Link to={`/tabledetails/${i}`}>{item}</Link></ListGroupItem>)})
+            }
+        </ListGroup>
       </div>
-      {/* {tables.length > 0 && clicked ? <Tabledetails data={tables}/> : <div></div>} */}
       </Container>
     )
 }

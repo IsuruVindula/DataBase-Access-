@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Label,FormGroup,Col,Input,Button, Container } from 'reactstrap';
+import { Form, Label, FormGroup, Col, Input, Button, Container, FormFeedback } from 'reactstrap';
 import {getDatabaseTypes} from '../services/sourceService';
 
 export default class NewDataForm extends Component {
@@ -24,6 +24,8 @@ export default class NewDataForm extends Component {
         this.setState({formdata:{
             [e.target.id]: e.target.value
         }})
+        // console.log(e.target.attributes[4])
+
     }
 
     handleSubmit = (e) =>{
@@ -94,7 +96,7 @@ export default class NewDataForm extends Component {
                     </Col>
                     <Label for="examplePassword" sm={2}>URL</Label>
                     <Col sm={10}>
-                        <Input type="text" name="password" id="URL" onChange={this.handleChange} style={{borderColor: 'yellowgreen', marginBottom: '10px'}}/>
+                        <Input type="Url" name="password" id="URL" onChange={this.handleChange} style={{borderColor: 'yellowgreen', marginBottom: '10px'}}/>
                     </Col>
                     <Label for="examplePassword" sm={2}>Driver</Label>
                     <Col sm={10}>
@@ -107,7 +109,10 @@ export default class NewDataForm extends Component {
                     </FormGroup>
                     <FormGroup check row style={{margin: '20px'}}>
                     <Col sm={{ size: 10, offset: 2 }}>
-                        <Button size="lg">Submit</Button>
+                    {
+                        this.state.formdata != null? <Button size="lg" >Submit</Button>: <Button size="lg" disabled="true">Submit</Button>
+                    }
+                        <Button size="lg" disabled="true">Submit</Button>
                     </Col>
                     </FormGroup>
                 </Form>
