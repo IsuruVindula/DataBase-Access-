@@ -21,8 +21,8 @@ const DataList = ({datalist, handleDelete, handleEdit, handleSearch}) => {
         <Link className="btn btn-secondary" to="/AddData">
           Add Source
         </Link>
-        <InputGroup style={{margin: "10px 0"}}>
-        <Input className='text-center' placeholder="Search Here" type='searchinput' onChange={handleSearch} />
+        <InputGroup style={{margin: "20px 0"}}>
+        <Input className='text-center' style={{borderColor: "green"}} placeholder="Search Here" type='searchinput' onChange={handleSearch} />
           <InputGroupAddon addonType="append"><InputGroupText>Search</InputGroupText></InputGroupAddon>
         </InputGroup>
       </div>
