@@ -40,17 +40,19 @@ const DataList = ({datalist}) => {
         {
         datalist.map((singledata,i) => {
         return(
-            <Row style={{borderColor:'black' ,margin:'2% 0 5% 0', fontSize:'20px'}}>
+            <Row style={{borderColor:'black', margin:'2% 0 5% 0'}}>
               <Col>
-                <Card body style={{backgroundColor: '#808000'}}>
-                  <CardTitle>Filesize:</CardTitle>  {singledata.total.fileSize}</Card>
+                <Card className="Card" body>
+                  <CardTitle>Filesize:</CardTitle>  {singledata.total.fileSize}
+                </Card>
               </Col>
               <Col>
-                <Card body style={{backgroundColor: '#808000'}}>
-                  <CardTitle>Last Access Time:</CardTitle><CardText>{singledata.total.lastAccessTime}</CardText></Card>
+                <Card body className="Card">
+                  <CardTitle>Last Access Time:</CardTitle><CardText>{singledata.total.lastAccessTime}</CardText>
+                </Card>
               </Col>
               <Col>
-                <Card body style={{backgroundColor: '#808000'}}><CardTitle>Last Modified Time:</CardTitle>
+                <Card body className="Card"><CardTitle>Last Modified Time:</CardTitle>
                   <CardText>{singledata.total.lastModifiedTime}</CardText>
                 </Card>
               </Col>

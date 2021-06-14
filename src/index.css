@@ -17,3 +17,23 @@ code {
   transition: 1s;
   transition-timing-function:cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+.metadata{
+  background-color: black;
+  margin: 2% 0 5% 0;
+  font-size:20px;
+}
+
+.Card:hover{
+  background-color:springgreen;
+  font-size: x-large;
+  transition: 1s;
+  transition-timing-function: ease;
+}
+
+.Card{
+  border-color: red;
+  font-family: 'Trebuchet MS';
+  font-weight: 400;
+  text-align: center;
+}
