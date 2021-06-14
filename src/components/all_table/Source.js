@@ -1,6 +1,5 @@
 import { Container, Label, ListGroup, ListGroupItem, InputGroupAddon, InputGroupText, Input, InputGroup} from "reactstrap";
 import { Link } from "react-router-dom";
-import './source.css';
 
 
 const DataList = ({datalist, handleDelete, handleEdit, handleSearch}) => {
@@ -30,7 +29,7 @@ const DataList = ({datalist, handleDelete, handleEdit, handleSearch}) => {
       <div>
         <ListGroup >
             {
-              keyarray.map((item,i) => {return (<ListGroupItem key={i}><Link to={`/tabledetails/${i}`}>{item}</Link></ListGroupItem>)})
+              keyarray.map((item,i) => {return (<ListGroupItem className="list-group-item" key={i}><Link style={{padding: "10px", margin: "5px", color: "black"}} to={`/tabledetails/${i}`}>{item}</Link></ListGroupItem>)})
             }
         </ListGroup>
       </div>

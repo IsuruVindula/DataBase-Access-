@@ -29,7 +29,6 @@ export default function SourcesList() {
     }
   }
 
-
   useEffect(() => {
 
       fetch('http://localhost:8000/db_name')
