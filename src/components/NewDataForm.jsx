@@ -112,7 +112,7 @@ export default class NewDataForm extends Component {
                     {
                         this.state.formdata != null? <Button size="lg" >Submit</Button>: <Button size="lg" disabled="true">Submit</Button>
                     }
-                        <Button size="lg" disabled="true">Submit</Button>
+                        {/* <Button size="lg" disabled="true">Submit</Button> */}
                     </Col>
                     </FormGroup>
                 </Form>
