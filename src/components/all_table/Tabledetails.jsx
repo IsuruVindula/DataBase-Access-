@@ -84,10 +84,11 @@ function Tabledetails(){
               <tbody>
             {
                keyarray.map((key,i) => {
+                 const d = key.split('=');
                 return (
-                  <tr key={i} className="text-center">
+                  <tr key={i} className="tableRow">
                     <td>{i}</td>
-                    <td>{key}</td>
+                    <td>{d[1]}</td>
                     <td>{showdata.detail[key].fileSize}</td>
                     <td>{showdata.detail[key].lastAccessTime}</td>
                     <td>{showdata.detail[key].lastModifiedTime}</td>

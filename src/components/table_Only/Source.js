@@ -76,7 +76,7 @@ const DataList = ({datalist}) => {
             attarray.map((key,i) => {
               const d = key.split('=');
             return (
-              <tr key={i} className="text-center">
+              <tr key={i} className="tableRow">
                 <td>{i}</td>
                 <td>{d[1]}</td>
                 <td>{datalist[0].detail[key].fileSize}</td>
