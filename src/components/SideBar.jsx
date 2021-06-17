@@ -29,10 +29,11 @@ export default function SideBar() {
         history.push(to);
       }}
       style={sidebar}
+
     >
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
-        <NavItem >
+        <NavItem>
           <NavIcon>
             <FaCoins size="1.8rem" />
           </NavIcon>

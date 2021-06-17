@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
+
 const countReducer = function (state = 0, action) {
   switch (action.type) {
     case "INCREMENT":

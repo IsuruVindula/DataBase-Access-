@@ -57,15 +57,15 @@ function Tabledetails(){
         <Container className="mt-3">
               <Row style={{borderColor:'black', margin:'2% 0% 0% 5%', fontSize:'19px'}}>
               <Col>
-                <Card body style={{backgroundColor: '#808000'}}>
+                <Card body className="Card">
                   <CardTitle>Filesize:</CardTitle>  {showdata.total.fileSize}</Card>
               </Col>
               <Col>
-                <Card body style={{backgroundColor: '#808000'}}>
+                <Card body className="Card">
                   <CardTitle>Last Access Time:</CardTitle><CardText>{showdata.total.lastAccessTime}</CardText></Card>
               </Col>
               <Col>
-                <Card body style={{backgroundColor: '#808000'}}><CardTitle>Last Modified Time:</CardTitle>
+                <Card body className="Card"><CardTitle>Last Modified Time:</CardTitle>
                   <CardText>{showdata.total.lastModifiedTime}</CardText>
                 </Card>
               </Col>

@@ -74,10 +74,11 @@ const DataList = ({datalist}) => {
           <tbody>
         {
             attarray.map((key,i) => {
+              const d = key.split('=');
             return (
               <tr key={i} className="text-center">
                 <td>{i}</td>
-                <td>{key}</td>
+                <td>{d[1]}</td>
                 <td>{datalist[0].detail[key].fileSize}</td>
                 <td>{datalist[0].detail[key].lastAccessTime}</td>
                 <td>{datalist[0].detail[key].lastModifiedTime}</td>
