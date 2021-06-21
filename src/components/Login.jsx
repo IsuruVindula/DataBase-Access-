@@ -48,20 +48,27 @@ export default function Login() {
   return (
     <Container
       style={{
+        display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "100px",
-        marginLeft: "300px",
+        minHeight: "100vh",
+        minWidth: "100%",
+        backgroundImage: `url("https://www.axiatadigitallabs.com/wp-content/uploads/2020/03/ADL-logo-1-e1592384526388.png")`,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        height: '100%',
       }}
     >
-      <Col lg={"6"} style={{ display: "block" }}>
+      <Col lg={"6"} style={{ display: "block"}}>
         <h3
           style={{
             display: "block",
             justifyContent: "center",
             alignItems: "center",
             marginLeft: "40%",
-            marginBottom: "10%",
+            fontFamily: 'fantasy',
+            fontSize: '40px'
           }}
         >
           Login
@@ -90,12 +97,11 @@ export default function Login() {
             />
             {errors.password?.message}
           </FormGroup>
-          <Button className="btn btn-primary btn-block mt-3 shadow center" type="submit">
-            Submit
+          <Button className="btn btn-info btn-lg btn-block mt-3 shadow center" type="submit">
+            Login
           </Button>
         </Form>
       </Col>
-      {/* </Row> */}
     </Container>
   );
 }
