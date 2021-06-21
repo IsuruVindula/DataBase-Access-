@@ -31,7 +31,7 @@ function App() {
           <Switch>
             <Route path="/login" component={Login} />
             <Route exact path="/sourcelist" component={SourceList} />
-            <Route exact path="/v1/test/db/<db name>/table/tableonlysourcelist" component={tableonlysourcelist} />
+            <Route exact path="/tableonlysourcelist" component={tableonlysourcelist} />
             <Route exact path="/v1/test/db/alltablesourcelist" component={alltablesourcelist} />
             <Route exact path="/tabledetails/:id" component={tabledetails} />
             <Route exact path="/adddata" component={AddData} />

@@ -4,6 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
 // import name from 'module';
+import axios from "axios";
 
 import {Button,Form,FormGroup,Input,Container,Col} from "reactstrap";
 import { login } from "../services/loginService";
@@ -23,10 +24,19 @@ export default function Login() {
     resolver: yupResolver(validationSchema), reValidateMode: 'onChange'
   });
 
+
+  //onSubumit Data Handle
   const onSubmit = (data) => {
     try {
       const { username, password } = data;
-      login(username, password);
+      // login(username, password);
+      console.log('clickedSubmit');
+      axios.post('http://10.70.17.23:8092/v1/login',{username: 'admin', password: 'admin'})
+      .then((res)=>{
+        console.log(res);
+      },
+      (error)=>{console.log(error)
+      })
       // localStorage.setItem("token", jwt);
       // history.push("/sourcelist");
       // toast.success("Logged in successfully");

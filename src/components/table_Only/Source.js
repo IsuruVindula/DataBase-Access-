@@ -15,12 +15,12 @@ const DataList = ({datalist}) => {
     }
 
 
-    const handleDelete = (id) => {
-      console.log("run handleDelete");
-      fetch('http://localhost:8000/table_name/detail/' + id,{method: 'DELETE'})
-      .then(res => console.log("Status:",res.status, "; Body:",res))
-      .then(history.push('/tableonlysourcelist'))
-    }
+    // const handleDelete = (id) => {
+    //   console.log("run handleDelete");
+    //   fetch('http://localhost:8000/table_name/detail/' + id,{method: 'DELETE'})
+    //   .then(res => console.log("Status:",res.status, "; Body:",res))
+    //   .then(history.push('/tableonlysourcelist'))
+    // }
 
      const spin = ()=> {if(datalist == null){
       return(

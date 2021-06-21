@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Spinner } from "reactstrap";
 import DataList from "./Source";
+import axios from 'axios';
 
 
 export default function SourcesList() {
@@ -22,7 +23,7 @@ export default function SourcesList() {
   useEffect(() => {
     setTimeout(() => {
       console.log("hook runs")
-        fetch('http://localhost:8000/table_name')
+        axios.get('http://10.70.17.23:8092/v1/test/db/dma/table/ti_fact_exec_dash_customer_center')
         .then(res =>
              res.json()
           ).then((rawdata)=>{
