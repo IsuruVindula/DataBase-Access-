@@ -7,12 +7,13 @@ import './index.css';
 
 // import HeadingComponent from './components/Heading'`
 import Login from './components/Login';
-import SourceList from './components/table_Only/SourceList';
+// import SourceList from './components/table_Only/SourceList';
 import SideBar from './components/SideBar';
 import tableonlysourcelist from './components/table_Only/SourceList';
 import alltablesourcelist from './components/all_table/SourceList';
 import tabledetails from './components/all_table/Tabledetails';
 import AddData from './components/NewDataForm';
+import sourcelistnew from './components/table_Only/Sourcelistnew';
 
 
 function App() {
@@ -23,18 +24,19 @@ function App() {
   //   return (<Login />);
   // } else {
     return (
-      <div className="App">
-        <ToastContainer />
-        <Router>
-
+      <div className="App" style={{height: "100%", margin: 0}}>
+        {/* <ToastContainer /> */}
           <SideBar />
+        <Router>
           <Switch>
             <Route path="/login" component={Login} />
-            <Route exact path="/sourcelist" component={SourceList} />
-            <Route exact path="/tableonlysourcelist" component={tableonlysourcelist} />
+            {/* <Route exact path="/sourcelist" component={SourceList} /> */}
+            {/* <Route exact path="/tableonlysourcelist" component={tableonlysourcelist} /> */}
             <Route exact path="/v1/test/db/alltablesourcelist" component={alltablesourcelist} />
             <Route exact path="/tabledetails/:id" component={tabledetails} />
             <Route exact path="/adddata" component={AddData} />
+            <Route exact path="/tableonlysourcelist" component={sourcelistnew} />
+
           </Switch>
         </Router>
       </div>

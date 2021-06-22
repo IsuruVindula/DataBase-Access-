@@ -3,64 +3,61 @@ import { Link, useHistory } from "react-router-dom";
 
 const DataList = ({datalist}) => {
 
-  console.log(datalist[0]);
-
     let attarray = [];
     const history = useHistory();
 
-    console.log("before id",datalist[0]);
+    console.log("before id",datalist);
 
-    if(datalist[0] !== undefined && datalist[0].detail !== undefined){
-      attarray = Object.keys(datalist[0].detail)
+    if(datalist !== undefined && datalist.detail !== undefined){
+      attarray = Object.keys(datalist.detail)
     }
+    console.log(datalist.detail["day_id=20210505"]);
 
-
-    // const handleDelete = (id) => {
-    //   console.log("run handleDelete");
-    //   fetch('http://localhost:8000/table_name/detail/' + id,{method: 'DELETE'})
-    //   .then(res => console.log("Status:",res.status, "; Body:",res))
-    //   .then(history.push('/tableonlysourcelist'))
-    // }
-
-     const spin = ()=> {if(datalist == null){
-      return(
-        <Spinner color="primary" />
-      )
-    }}
-
-    return(
-    <div className='mt-3'>
-    <Container style={{maxWidth: '85%', margin:'0 0 0 8%'}}>
-      <div className="mt-3">
-        <Label style={{ marginRight: "7px" }}>Data Source List</Label>
-        <Link className="btn btn-secondary" to="/adddata">
-          Add Source
-        </Link>
-      </div>
-        {
-        datalist.map((singledata,i) => {
-        return(
-            <Row style={{borderColor:'black', margin:'2% 0 5% 0'}}>
+    const metadata = datalist.total ? (
+      <Row style={{borderColor:'black', margin:'2% 0 5% 0'}}>
               <Col>
                 <Card className="Card" body>
-                  <CardTitle>Filesize:</CardTitle>  {singledata.total.fileSize}
+                  <CardTitle>Filesize:</CardTitle>  {datalist.total.fileSize}
                 </Card>
               </Col>
               <Col>
                 <Card body className="Card">
-                  <CardTitle>Last Access Time:</CardTitle><CardText>{singledata.total.lastAccessTime}</CardText>
+                  <CardTitle>Last Access Time:</CardTitle><CardText>{datalist.total.lastAccessTime}</CardText>
                 </Card>
               </Col>
               <Col>
                 <Card body className="Card"><CardTitle>Last Modified Time:</CardTitle>
-                  <CardText>{singledata.total.lastModifiedTime}</CardText>
+                  <CardText>{datalist.total.lastModifiedTime}</CardText>
                 </Card>
               </Col>
             </Row>
-          )
-        })
-        }
-      <Row>
+    ) : (<h1>loading</h1>);
+
+    const tableData = datalist.detail ? (
+           attarray.map((key,i) => {
+            return (
+              <tr key={i} className="tableRow">
+                <td>{i}</td>
+                <td>{key}</td>
+                <td>{datalist.detail[key].fileSize}</td>
+                <td>{datalist.detail[key].lastAccessTime}</td>
+                <td>{datalist.detail[key].lastModifiedTime}</td>
+              </tr>
+              )
+            })
+    ) : (<h1>loading</h1>);
+
+    return(
+      <div className='mt-3'>
+      <Container style={{maxWidth: '85%', margin:'0 0 0 8%'}}>
+        <div className="mt-3">
+          <Label style={{ marginRight: "7px" }}>Data Source List</Label>
+          <Link className="btn btn-secondary" to="/adddata">
+            Add Source
+          </Link>
+        </div>
+        <div>{metadata}</div>
+        <Row>
         <Table className="table table-dark table-striped table-bordered table-hover table-responsive" style={{margin:'0px 0px'}}>
           <thead className="text-center">
             <tr>
@@ -72,29 +69,13 @@ const DataList = ({datalist}) => {
             </tr>
           </thead>
           <tbody>
-        {
-            attarray.map((key,i) => {
-              const d = key.split('=');
-            return (
-              <tr key={i} className="tableRow">
-                <td>{i}</td>
-                <td>{d[1]}</td>
-                <td>{datalist[0].detail[key].fileSize}</td>
-                <td>{datalist[0].detail[key].lastAccessTime}</td>
-                <td>{datalist[0].detail[key].lastModifiedTime}</td>
-                {/* <td>
-                  <Button size="sm">Edit</Button>{' '}
-                  <Button color="primary" size="sm" onClick={() => handleDelete(key)}>Delete</Button>
-                </td> */}
-              </tr>
-              )
-          })
-          }
+            {/* add contain */}
+            {tableData}
           </tbody>
         </Table>
       </Row>
-    </Container>
-    </div>
+      </Container>
+      </div>
     )
 }
 

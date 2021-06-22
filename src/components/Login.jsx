@@ -28,18 +28,22 @@ export default function Login() {
   //onSubumit Data Handle
   const onSubmit = (data) => {
     try {
-      const { username, password } = data;
+      // const { username, password } = data;
       // login(username, password);
       console.log('clickedSubmit');
-      axios.post('http://10.70.17.23:8092/v1/login',{username: 'admin', password: 'admin'})
+
+      let config = {"headers": {'Content-Type': 'application/json'}};
+      let temp = {user: 'admin', password: 'admin'};
+
+
+      axios.post('http://10.70.17.23:8092/v1/auth/login', temp, config)
       .then((res)=>{
-        console.log(res);
+        console.log("RES",res.data);
       },
-      (error)=>{console.log(error)
+      (error)=>{console.log("ERROR",error);
       })
       // localStorage.setItem("token", jwt);
-      // history.push("/sourcelist");
-      // toast.success("Logged in successfully");
+      history.push("/tableonlysourcelist");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
       }
