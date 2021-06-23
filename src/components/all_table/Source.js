@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const DataList = ({datalist, handleDelete, handleEdit, handleSearch}) => {
 
 
-  let numarray = Object.keys(datalist);
-  let keyarray = numarray.map(i => {return(Object.keys(datalist[i]))})
+  const numarray = Object.keys(datalist);
+  console.log(numarray)
 
 // const databaseSelect = (databasename) => {
 //   Object.keys(datalist).forEach((data) => {if (typeof datalist[data][databasename] !== 'undefined'){tables = (datalist[data][databasename])}})
@@ -29,7 +29,7 @@ const DataList = ({datalist, handleDelete, handleEdit, handleSearch}) => {
       <div>
         <ListGroup >
             {
-              keyarray.map((item,i) => {return (<ListGroupItem className="list-group-item" key={i}><Link style={{padding: "10px", margin: "5px", color: "black"}} to={`/tabledetails/${i}`}>{item}</Link></ListGroupItem>)})
+              numarray.map((item,i) => {return (<ListGroupItem className="list-group-item" key={i}><Link style={{padding: "10px", margin: "5px", color: "black"}} to={`/tabledetails/${datalist[item]}`}>{datalist[item]}</Link></ListGroupItem>)})
             }
         </ListGroup>
       </div>
