@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { ListGroupItem, Container, ListGroup} from "reactstrap";
-
+import { ListGroupItem, Container, ListGroup, Spinner} from "reactstrap";
+import ShowTable from './ShowTable';
 
 class Tabledetailsnew extends Component {
     state = {
         keys: [],
-        data: {}
+        data: {},
+        selecteddata: {}
     }
 
     componentDidMount(){
@@ -21,22 +22,28 @@ class Tabledetailsnew extends Component {
     }
 
 
+     handleClick(key){
+        console.log(this.state.data[key]);
+        this.setState({selecteddata: this.state.data[key]})
+     }
+
+
     render() {
-        // (Object.keys(this.state.data[i]))
+        const tablenames = this.state.keys.map((key) => {return (Object.keys(this.state.data[key]))})
+
         const tables = this.state.data ? (
-            this.state.keys.map(i => (
-                <ListGroupItem><Link style={{color: 'black'}}>{Object.keys(this.state.data[i])}</Link></ListGroupItem>
+            tablenames.map((tablename,key) => (
+                <ListGroupItem key={key}><Link style={{color: 'black'}} to="/showtable" onClick={()=>this.handleClick(key)}>{tablename}</Link></ListGroupItem>
             ))
-        ): ( <h1> NO data</h1> )
+        ): ( <Spinner/> )
 
 
         return(
             <Container style={{padding: '0%', borderLeftStyle: 'none'}}>
-
                     <ListGroup className="list-group-item">
                         {tables}
                     </ListGroup>
-
+                    {Object.keys(this.state.selecteddata).length !== 0 &&  <ShowTable data={this.state.selecteddata} />}
             </Container>
         )
     }

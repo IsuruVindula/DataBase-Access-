@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 
@@ -10,10 +9,10 @@ import Login from './components/Login';
 // import SourceList from './components/table_Only/SourceList';
 import SideBar from './components/SideBar';
 import alltablesourcelist from './components/all_table/SourceList';
-import tabledetails from './components/all_table/Tabledetails';
 import AddData from './components/NewDataForm';
 import sourcelistnew from './components/table_Only/Sourcelistnew';
 import Tabledetailsnew from './components/all_table/Tabledetailsnew';
+import ShowTable from './components/all_table/ShowTable';
 
 
 function App() {
@@ -36,6 +35,7 @@ function App() {
             <Route exact path="/tabledetails/:dbname" component={Tabledetailsnew} />
             <Route exact path="/adddata" component={AddData} />
             <Route exact path="/tableonlysourcelist" component={sourcelistnew} />
+            <Route exact path="/showtable" component={ShowTable} />
 
           </Switch>
         </Router>
