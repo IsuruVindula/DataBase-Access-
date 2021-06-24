@@ -35,7 +35,7 @@ function App() {
             <Route exact path="/tabledetails/:dbname" component={Tabledetailsnew} />
             <Route exact path="/adddata" component={AddData} />
             <Route exact path="/tableonlysourcelist" component={sourcelistnew} />
-            <Route exact path="/showtable" component={ShowTable} />
+            <Route exact path="/showtable/:dbname/:tablename" component={ShowTable} />
 
           </Switch>
         </Router>

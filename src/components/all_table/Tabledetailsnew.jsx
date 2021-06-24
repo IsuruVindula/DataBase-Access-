@@ -8,12 +8,13 @@ class Tabledetailsnew extends Component {
     state = {
         keys: [],
         data: {},
-        selecteddata: {}
+        database: ''
     }
 
     componentDidMount(){
         const {dbname} = this.props.match.params;
-        console.log(dbname);
+        this.setState({database: dbname})
+
         axios.get('http://10.70.17.23:8092/v1/test/db/' + dbname )
         .then(res => {
             this.setState({data: res.data, keys: Object.keys(res.data)})
@@ -22,18 +23,13 @@ class Tabledetailsnew extends Component {
     }
 
 
-     handleClick(key){
-        console.log(this.state.data[key]);
-        this.setState({selecteddata: this.state.data[key]})
-     }
-
-
     render() {
         const tablenames = this.state.keys.map((key) => {return (Object.keys(this.state.data[key]))})
+        console.log(this.state)
 
         const tables = this.state.data ? (
             tablenames.map((tablename,key) => (
-                <ListGroupItem key={key}><Link style={{color: 'black'}} to="/showtable" onClick={()=>this.handleClick(key)}>{tablename}</Link></ListGroupItem>
+                <ListGroupItem key={key}><Link style={{color: 'black'}} to={`/showtable/${this.state.database}/${tablename}/`} >{tablename}</Link></ListGroupItem>
             ))
         ): ( <Spinner/> )
 
@@ -43,7 +39,7 @@ class Tabledetailsnew extends Component {
                     <ListGroup className="list-group-item">
                         {tables}
                     </ListGroup>
-                    {Object.keys(this.state.selecteddata).length !== 0 &&  <ShowTable data={this.state.selecteddata} />}
+                    {/* {Object.keys(this.state.selecteddata).length !== 0 &&  <ShowTable/>} */}
             </Container>
         )
     }
