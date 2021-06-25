@@ -11,7 +11,7 @@ const DataList = ({datalist}) => {
     if(datalist !== undefined && datalist.detail !== undefined){
       attarray = Object.keys(datalist.detail)
     }
-    console.log(datalist.detail["day_id=20210505"]);
+    // console.log(datalist.detail["day_id=20210505"]);
 
     const metadata = datalist.total ? (
       <Row style={{borderColor:'black', margin:'2% 0 5% 0'}}>
@@ -38,7 +38,7 @@ const DataList = ({datalist}) => {
             return (
               <tr key={i} className="tableRow">
                 <td>{i}</td>
-                <td>{key}</td>
+                <td>{key.split('=')[1]}</td>
                 <td>{datalist.detail[key].fileSize}</td>
                 <td>{datalist.detail[key].lastAccessTime}</td>
                 <td>{datalist.detail[key].lastModifiedTime}</td>

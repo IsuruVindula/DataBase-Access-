@@ -14,13 +14,14 @@ import { toast } from "react-toastify";
 export default function Login() {
 
   const history = useHistory();
-  const [loginState, setloginState] = useState({});
 
+  //input validation
   const validationSchema = Yup.object().shape({
-    username: Yup.string().required("Username is required!"),
-    password: Yup.string().min(8, "Password must be at least 8 characters.!"),
+    user: Yup.string().required("Username is required!"),
+    password: Yup.string().min(5, "Password must be at least 5 characters!"),
   });
 
+  // useForm handler
   const { handleSubmit, control, errors } = useForm({
     resolver: yupResolver(validationSchema), reValidateMode: 'onChange'
   });
@@ -33,15 +34,16 @@ export default function Login() {
       console.log('clickedSubmit');
 
       let config = {"headers": {'Content-Type': 'application/json'}};
-      let temp = {user: data.username, password: data.password};
+      let temp = {user: data.user, password: data.password};
       console.log(temp)
 
+      //login API call
       axios.post('http://10.70.17.23:8092/v1/auth/login', temp, config)
       .then((res)=>{
-        setloginState(res.data);
+        console.log(res.data);
         if(res.data.status !== "failure"){
           setTimeout(
-            history.push("/tableonlysourcelist"), 1000
+            history.push("/alltablesourcelist"), 1000
           )
         }
       },
@@ -86,7 +88,7 @@ export default function Login() {
           <FormGroup className="mb-3">
             <Controller
               as={Input}
-              name="username"
+              name="user"
               placeholder="Username"
               control={control}
               defaultValue=""

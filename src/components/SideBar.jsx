@@ -8,7 +8,6 @@ import SideNav, {
 } from "@trendmicro/react-sidenav";
 import { useHistory } from "react-router-dom";
 
-// Be sure to include styles at some point, probably during your bootstraping
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 
 import { FaViacoin, FaCoins} from "react-icons/fa";
@@ -25,7 +24,6 @@ export default function SideBar() {
     <SideNav
       //redirecting
       onSelect={(selected) => {
-        selected.persist()
         const to = "/" + selected;
         // history.push('to')
         console.log(to)
