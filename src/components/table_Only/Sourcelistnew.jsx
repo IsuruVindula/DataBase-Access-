@@ -7,7 +7,9 @@ import DataList from "./Source";
 
     componentDidMount(){
         axios.get('http://10.70.17.23:8092/v1/test/db/dma/table/ti_fact_exec_dash_customer_center')
-        .then(res => this.setState(res.data))
+        .then(res => (
+            this.setState(res.data)
+            ))
     }
 
     render() {

@@ -29,14 +29,12 @@ function App() {
         <Router>
           <Switch>
             <Route path="/login" component={Login} />
-            {/* <Route exact path="/sourcelist" component={SourceList} /> */}
             <Route exact path="/alltablesourcelist" component={alltablesourcelist} />
             {/* <Route exact path="/tabledetails/:id" component={tabledetails} /> */}
             <Route exact path="/tabledetails/:dbname" component={Tabledetailsnew} />
             <Route exact path="/adddata" component={AddData} />
             <Route exact path="/tableonlysourcelist" component={sourcelistnew} />
             <Route exact path="/showtable/:dbname/:tablename" component={ShowTable} />
-
           </Switch>
         </Router>
       </div>

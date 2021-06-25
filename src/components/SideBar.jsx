@@ -25,11 +25,12 @@ export default function SideBar() {
     <SideNav
       //redirecting
       onSelect={(selected) => {
+        selected.persist()
         const to = "/" + selected;
-        history.push(to);
+        // history.push('to')
+        console.log(to)
       }}
       style={sidebar}
-
     >
       <SideNav.Toggle />
       <SideNav.Nav defaultSelected="home">
@@ -38,7 +39,7 @@ export default function SideBar() {
             <FaCoins size="1.8rem" />
           </NavIcon>
           <NavText>Data Storage</NavText>
-          <NavItem eventKey="v1/test/db/alltablesourcelist">
+          <NavItem eventKey="alltablesourcelist">
             <NavText>Source List</NavText>
           </NavItem>
           <NavItem eventKey="adddata">

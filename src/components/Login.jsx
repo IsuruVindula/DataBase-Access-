@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 export default function Login() {
 
   const history = useHistory();
+  const [loginState, setloginState] = useState({});
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required("Username is required!"),
@@ -28,27 +29,31 @@ export default function Login() {
   //onSubumit Data Handle
   const onSubmit = (data) => {
     try {
-      // const { username, password } = data;
       // login(username, password);
       console.log('clickedSubmit');
 
       let config = {"headers": {'Content-Type': 'application/json'}};
-      let temp = {user: 'admin', password: 'admin'};
-
+      let temp = {user: data.username, password: data.password};
+      console.log(temp)
 
       axios.post('http://10.70.17.23:8092/v1/auth/login', temp, config)
       .then((res)=>{
-        console.log("RES",res.data);
+        setloginState(res.data);
+        if(res.data.status !== "failure"){
+          setTimeout(
+            history.push("/tableonlysourcelist"), 1000
+          )
+        }
       },
       (error)=>{console.log("ERROR",error);
       })
       // localStorage.setItem("token", jwt);
-      history.push("/tableonlysourcelist");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
       }
     }
   };
+
   return (
     <Container
       style={{
@@ -74,9 +79,7 @@ export default function Login() {
             fontFamily: 'fantasy',
             fontSize: '40px'
           }}
-        >
-          Login
-        </h3>
+        >Login</h3>
 
         {/* Login Form */}
         <Form onSubmit={handleSubmit(onSubmit)} className="form-group p-3 mt-5 bg-white shadow-lg border border-dark rounded">

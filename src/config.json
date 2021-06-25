@@ -1,6 +1,6 @@
 [
   {
-    "apiUrl": "/vi/",
+    "apiUrl": "http://10.70.17.23:8092/v1/auth",
     "tableOnlyURL": "/v1/test/db/<db name>/table/<table-name>",
     "allTableURL": "/v1/test/db/<db name>"
   }
